@@ -8,4 +8,4 @@ https://www.acmicpc.net/problem/9663
 ### 4. 필자는 알고리즘을 구현해놨음에도 시간복잡도가 매우 크기 때문에 이 코드로 통과할 수가 없었음.
 x, y를 단축하는 최적화, visited 맵 최적화를 해도 힘듦.   
 ### 5. 그래서 직접 값을 구하고 배열을 만들어 꼼수로 통과한다.
-### 6. [!](꼼수 보러가기)
+### 6. [꼼수 보러가기](https://github.com/alsrua7222/BOJ_Algorithm_Study/blob/main/Solved/9663/9663_data_set.txt)

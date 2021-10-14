@@ -1,0 +1,43 @@
+import heapq, sys
+input = sys.stdin.readline
+N = int(input())
+arr = []
+parent = [-1] * (N + 1)
+def getDistance(a, b):
+    tmp1 = (a[0] - b[0]) ** 2
+    tmo2 = (a[1] - b[1]) ** 2
+    return (tmp1 + tmo2) ** .5
+def find(x):
+    if parent[x] < 0:
+        return x
+    else:
+        p = find(parent[x])
+        parent[x] = p
+        return p
+def union(x, y):
+    if parent[x] < parent[y]:
+        parent[x] += parent[y]
+        parent[y] = x
+    else:
+        parent[y] += parent[x]
+        parent[x] = y
+
+for _ in range(N):
+    arr.append(tuple(map(float, input().split())))
+
+HQ = []
+for i in range(N - 1):
+    for j in range(i + 1, N):
+        heapq.heappush(HQ, [getDistance(arr[i], arr[j]), i, j])
+
+cnt = 0
+answer = 0
+while cnt != N - 1:
+    dist, a, b = heapq.heappop(HQ)
+    ar = find(a)
+    br = find(b)
+    if ar != br:
+        union(ar, br)
+        answer += dist
+        cnt += 1
+print(round(answer, 2))

@@ -31,7 +31,7 @@ for _ in range(int(input())):
             answer += 1
             visited[i] = 2
 
-    # 자기 번호를 찾으면 싸이클한 횟수만큼 visited에 1 대신 2로 처리.
+    # 자기 번호를 찾으면 싸이클한 횟수만큼 visited에 1 대신 2로 처리. 
     for i in range(1, N + 1):
         if visited[i] == 0:
             visited[i] = 1

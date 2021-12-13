@@ -12,9 +12,6 @@ for i in range(N):
         answer[i] -= max(0, arr[j][2] - (abs(arr[j][0] - arr[i][0]) + abs(arr[j][1] - arr[i][1])))
 MAX = 0
 for v in answer:
-    if v < 0:
-        print("IMPOSSIBLE")
-        exit(0)
-    elif v > MAX:
+    if v > MAX:
         MAX = v
 print(MAX if MAX != 0 else "IMPOSSIBLE")

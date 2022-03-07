@@ -2,7 +2,7 @@ import os, sys, re, requests
 
 # 양식
 # python makeBOJFolder.py (문제번호) (복사할 파일경로) (블로그 주소)
-# python makeBOJFolder.py 1269 Ebay/1.py https://blog.naver.com/alsrua7222/222658769362
+# python makeBOJFolder.py 23022 Ebay/1.py https://blog.naver.com/alsrua7222/222666592514
 # python makeBOJFolder.py 2580 C:\Users\KMK\source\repos\CNote\CNote\소스.cpp https://blog.naver.com/alsrua7222/222634634258
 
 def makeDirectory(number):
@@ -24,7 +24,7 @@ def makeSourceFile(number, path, blog_path):
     '//' = c, cpp, js, java
     """
     SOURCE_CONTEXT = f"{comment} 풀이 과정\n{comment} {blog_path}\n\n"
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         for v in f.readlines():
             SOURCE_CONTEXT += v
         with open(f"{number}\{number}.{ex_name}", 'w', encoding='utf-8') as f2:

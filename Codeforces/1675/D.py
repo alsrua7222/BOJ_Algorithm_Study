@@ -1,18 +1,21 @@
-# 런타임 에러 7번에서 자주 터짐.
-# 이유를 전혀 알 수 없음.
+# 아무리 해봐도 결국 코드포스에서는 재귀 깊이를 설정 못 한다.
+# 파이썬 똥똥똥
 
-from collections import defaultdict
-
+import sys
+sys.setrecursionlimit(2 * (10 ** 5))
 for _ in range(int(input())):
     n = int(input())
     a = list(map(int, input().split()))
-    Graph = defaultdict(list)
+    Graph = dict()
     root = -1
     for i in range(n):
         if a[i] == i + 1:
             root = i + 1
         else:
-            Graph[a[i]].append(i + 1)
+            if a[i] in Graph:
+                Graph[a[i]].append(i + 1)
+            else:
+                Graph[a[i]] = [i + 1]
     
     answer = []
     collect = []
@@ -21,15 +24,22 @@ for _ in range(int(input())):
         global collect, answer
         collect.append(node)
         visited[node] = True
-        
         if node not in Graph:
             answer.append(collect)
             collect = []
             return
-        for child in list(Graph[node]):
-            if visited[child]:
-                continue
-            dfs(child)
+        index = 0
+        try:
+            while index < len(Graph[node]):
+                child = Graph[node][index]
+                if visited[child]:
+                    continue
+                dfs(child)
+                index += 1
+        except Exception as e:
+            print(e)
+            print("node: ", node)
+            print("Graph:", Graph[node])
         return
 
     dfs(root)

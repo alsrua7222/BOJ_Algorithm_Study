@@ -5,9 +5,11 @@ Graph = defaultdict(list)
 for _ in range(M):
     u, v = map(int, input().split())
     Graph[u].append(v)
+    Graph[v].append(u)
 
 for key in Graph.keys():
     Graph[key].sort(reverse=True)
+
 def BFS(start):
     Queue = deque([start])
     count = [0] * (N + 1)

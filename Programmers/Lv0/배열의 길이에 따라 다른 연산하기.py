@@ -1,0 +1,1 @@
+solution=lambda x,y:[x[i]+y if len(x)&1!=i&1 else x[i] for i in range(len(x))]

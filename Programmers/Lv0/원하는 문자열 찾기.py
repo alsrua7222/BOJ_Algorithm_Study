@@ -1,0 +1,1 @@
+solution=lambda x,y:int(y.lower()in x.lower())

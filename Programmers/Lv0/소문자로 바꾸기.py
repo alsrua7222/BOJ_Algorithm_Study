@@ -1,0 +1,1 @@
+solution=lambda a:a.lower()
